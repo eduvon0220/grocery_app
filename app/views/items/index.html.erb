@@ -1,0 +1,8 @@
+<ul>
+<% @items.each do |item| %>
+	<li><%= item.name.titleize %> - <%= number_to_currency item.price %></li>
+<% end %>
+</ul>
+<h1>Total: <%= number_to_currency @items.sum(:price) %></h1>
+
+<%= link_to "Back", list_path(@list) %>
