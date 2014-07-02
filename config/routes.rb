@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   root to: "lists#index"
 
   resources :lists do
-    resources :items
+    resources :items do
+      collection do
+        put :purchased
+      end
+    end
   end
   
   # The priority is based upon order of creation: first created -> highest priority.

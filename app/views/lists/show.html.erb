@@ -1,15 +1,21 @@
 <h1><%= @list.name %></h1>
 
+<%= form_tag purchased_list_items_path(@list), method: :put do %>
 <ul>
 <% @items.each do |item| %>
 
-	<li><%= link_to item.name, [@list, item] %>
+<% unless item.purchased? %>
+  <li>
+  <%= check_box_tag "item_ids[]", item.id %>
+  <%= link_to item.name, [@list, item]  %>
 		<%= link_to "Update", edit_list_item_path(@list, item) %>
 	</li>
-
+<% end %>
 <% end %>
 </ul> 
 
+<%= submit_tag "In the Cart" %>
+<% end %>
 <%= link_to 'New Item', new_list_item_path(@list) %>
 <%= link_to 'Back to Lists', lists_path %>
 <%= link_to 'Item Details', list_items_path(@list) %>

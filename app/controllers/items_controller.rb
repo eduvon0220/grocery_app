@@ -45,10 +45,15 @@ class ItemsController < ApplicationController
     end
   end
 
+  def purchased
+    Item.where(id: params[:item_ids]).update_all(purchased: true)
+    redirect_to @list
+  end
+
   private
 
   def item_params
-  	params.require(:item).permit(:name, :brand, :location, :price, :quantity)
+  	params.require(:item).permit(:name, :brand, :location, :price, :quantity, :purchased)
   end
 
 end
