@@ -92,7 +92,7 @@ describe User do
       let(:user_for_invalid_password) { found_user.authenticate("invalid") }
 
       specify { expect(@user).not_to eq(user_for_invalid_password) }
-      specify { expect(user_for_invalid_password).to be_falsey }
+      specify { expect(user_for_invalid_password).to be_false }
     end
   end
 end
