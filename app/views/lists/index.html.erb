@@ -2,7 +2,9 @@
 
 <ul>
 <% @lists.each do |list| %>
-	<li><%= link_to list.name, list_path(list) %> (<%= time_ago_in_words list.created_at %>)</li>
+	<li><%= link_to list.name, list_path(list) %> (<%= time_ago_in_words list.created_at %>)
+			<%= link_to "Delete", list_path(list), method: :delete, data: { confirm: "Are you sure?" }  %>
+	</li>
 <% end %>
 </ul>
 
