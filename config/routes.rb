@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   resources :lists do
     resources :items do
       collection do
-        put :purchased
+        get :edit_multiple
+        put :update_multiple
       end
     end
   end

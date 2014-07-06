@@ -45,6 +45,21 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    @item = Item.find(params[:id])
+    @item.destroy
+    redirect_to @list, notice: "Item was successfully destroyed."
+  end
+
+  def edit_multiple
+    @items = Item.where(id: params[:item_ids])
+  end
+
+  def update_multiple
+    Item.update(params[:items].keys, params[:items].values)
+    redirect_to @list
+  end
+
   def purchased
     Item.where(id: params[:item_ids]).update_all(purchased: true)
     redirect_to @list
