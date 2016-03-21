@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
 
+  resources :servers
+
   resources :users
 
-  root to: "lists#index"
+  root 'servers#index'
+  #root to: "lists#index"
 
   get '/signup',  to: 'users#new'
 

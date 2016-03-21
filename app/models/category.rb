@@ -1,3 +1,4 @@
 class Category < ActiveRecord::Base
-	belongs_to :item
+	has_many :categorizations
+	has_many :items, :through => :categorizations
 end
